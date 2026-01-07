@@ -27,6 +27,15 @@
   margin-bottom: 0.5rem;
   font-weight: 700;
 }
+
+.login-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
 .subtitle {
   text-align: center;
   color: var(--text-secondary);

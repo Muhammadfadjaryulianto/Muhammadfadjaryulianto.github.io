@@ -102,6 +102,7 @@
   .sidebar {
     transform: translateX(-100%);
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* 2. Tampilkan Sidebar saat kelas .open aktif */
@@ -163,7 +164,6 @@
 
   /* 5. Overlay Gelap Belakang */
   .sidebar-overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -172,9 +172,14 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 900;
     backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden; /* Agar tidak menghalangi klik saat tidak aktif */
+    /* Tambahkan transisi untuk opacity dan visibility */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
   }
   .sidebar-overlay.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -223,75 +228,5 @@
     /* Padding kiri disesuaikan agar tidak tabrakan dengan hamburger */
     padding: 1rem 1.5rem 1rem 4rem;
     height: auto;
-  }
-}
-
-/* ... [Kode Sidebar & Top Bar yang lama biarkan tetap ada] ... */
-
-/* === GLOBAL LAYOUT STRUCTURE (Pindahkan dari dashboard.css) === */
-/* Agar Dashboard, KRS, dan Nilai punya struktur identik */
-
-.dashboard-layout {
-  display: flex;
-  min-height: 100vh;
-  background-color: var(--bg-color);
-  overflow-x: hidden;
-}
-
-.main-content {
-  margin-left: 20vw; /* Sesuai lebar sidebar */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  transition: margin-left 0.3s;
-  /* --- PERBAIKAN FINAL CHROME JUMP --- */
-  /* 1. Kunci agar tidak melebar melebihi viewport */
-  width: 100%;
-  max-width: 100%;
-
-  /* 2. Mantra Flexbox: Izinkan container menyusut meski kontennya lebar */
-  min-width: 0;
-
-  /* 3. Paksa potong overflow horizontal apapun yang terjadi */
-  overflow-x: hidden !important;
-
-  /* Opsional: Agar animasi scroll anchor lebih halus */
-  scroll-behavior: smooth;
-}
-
-.content-wrapper {
-  /* Padding Global: Konsisten di semua halaman */
-  padding: 0.5rem 2rem 4rem 2rem;
-  flex: 1;
-  width: 80vw; /* Pastikan mengisi lebar yang tersedia */
-  box-sizing: border-box; /* Mencegah padding menambah lebar total */
-}
-
-/* Judul H1 Global */
-h1 {
-  text-align: left;
-  margin-bottom: 1rem;
-  font-size: 2.2rem;
-  color: var(--text-primary);
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-/* === GLOBAL RESPONSIVE (Mobile & Zoom 200%) === */
-@media (max-width: 1024px) {
-  .main-content {
-    margin-left: 0; /* Reset margin saat sidebar hilang */
-  }
-
-  .content-wrapper {
-    /* Padding mengecil di Mobile agar tidak ada scroll horizontal */
-    width: 100vw;
-    padding: 2rem 1.5rem;
-  }
-
-  h1 {
-    font-size: 1.75rem;
-    margin-top: 1rem;
-    margin-left: 0;
   }
 }
