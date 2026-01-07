@@ -107,6 +107,7 @@
   /* 2. Tampilkan Sidebar saat kelas .open aktif */
   .sidebar.open {
     transform: translateX(0);
+    width: 75vw; /* Lebar 3/4 layar di mobile */
   }
 
   /* 3. Tombol Hamburger (PERBAIKAN DI SINI) */
