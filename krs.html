@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartu Rencana Studi - SIAKAD UNTIRTA</title>
+
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/krs.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
+
+    <div class="dashboard-layout">
+      <div id="navigation-component"></div>
+
+      <main id="main-content" class="main-content">
+        <div id="topbar-component"></div>
+
+        <div class="content-wrapper">
+          <h1 class="main-content-title">Kartu Rencana Studi (KRS)</h1>
+
+          <div
+            id="live-announcer"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+          <div id="toast-container" class="toast-hidden">
+            <span id="toast-message"></span>
+          </div>
+
+          <div class="krs-container">
+            <section class="card" aria-labelledby="header-tawaran">
+              <h2 id="header-tawaran" class="card-title">
+                Mata Kuliah Ditawarkan
+              </h2>
+              <div
+                class="table-responsive"
+                tabindex="0"
+                aria-label="Tabel Data Mata Kuliah Ditawarkan"
+              >
+                <table class="data-table">
+                  <caption class="sr-only">
+                    Daftar mata kuliah yang dapat diambil semester ini
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Kode</th>
+                      <th scope="col">Mata Kuliah</th>
+                      <th scope="col">SKS</th>
+                      <th scope="col">Jadwal</th>
+                      <th scope="col">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table-tawaran-body"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section
+              id="krs-taken-section"
+              class="card"
+              aria-labelledby="header-diambil"
+              style="margin-top: 2rem"
+            >
+              <div class="print-header">
+                <div class="print-logo-area">
+                  <img
+                    src="assets/image/untirta.webp"
+                    alt="Logo UNTIRTA"
+                    class="print-logo"
+                  />
+                  <div class="print-title-text">
+                    <h3>
+                      KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI
+                    </h3>
+                    <h2>UNIVERSITAS SULTAN AGENG TIRTAYASA</h2>
+                    <p>
+                      Jl. Raya Palka Km 3 Sindangsari, Pabuaran, Kab. Serang,
+                      Banten
+                    </p>
+                  </div>
+                </div>
+                <hr class="print-divider" />
+                <div class="student-info-print">
+                  <div class="info-row">
+                    <span class="info-label">Nama</span>
+                    <span class="info-value"
+                      >: <strong>Muhammad Fadjar Yulianto</strong></span
+                    >
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">NIM</span>
+                    <span class="info-value"
+                      >: <strong>3337210044</strong></span
+                    >
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Program Studi</span>
+                    <span class="info-value">: Informatika</span>
+                  </div>
+                  <div class="info-row">
+                    <span class="info-label">Semester</span>
+                    <span class="info-value">: Ganjil 2025/2026</span>
+                  </div>
+                </div>
+                <h2 class="doc-title">KARTU RENCANA STUDI (KRS)</h2>
+              </div>
+              <div class="card-header-flex">
+                <h2 id="header-diambil" class="card-title">
+                  Rencana Studi Saya
+                </h2>
+
+                <div class="header-actions">
+                  <span class="sks-counter"
+                    >Total SKS: <strong id="total-sks">0</strong>/24</span
+                  >
+                  <button
+                    id="btn-print"
+                    class="btn-secondary btn-sm"
+                    aria-label="Cetak Kartu Rencana Studi"
+                  >
+                    🖨️ Cetak KRS
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="table-responsive"
+                tabindex="0"
+                aria-label="Tabel Data Kartu Rencana Studi"
+              >
+                <table class="data-table">
+                  <caption class="sr-only">
+                    Daftar mata kuliah yang telah dipilih
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Kode</th>
+                      <th scope="col">Mata Kuliah</th>
+                      <th scope="col">SKS</th>
+                      <th scope="col" class="no-print">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table-krs-body">
+                    <tr>
+                      <td colspan="4" class="text-center text-muted">
+                        Belum ada mata kuliah diambil.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="print-footer">
+                <div class="signature-box">
+                  <p>Serang, 1 Januari 2026</p>
+                  <p>Mahasiswa,</p>
+                  <br /><br /><br />
+                  <p><strong>Muhammad Fadjar Yulianto</strong></p>
+                </div>
+                <div class="signature-box">
+                  <p>Menyetujui,</p>
+                  <p>Dosen Pembimbing Akademik,</p>
+                  <br /><br /><br />
+                  <p><strong>(Nama Dosen PA)</strong></p>
+                  <p>NIP. 1987654321</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div
+      id="confirmation-modal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal-backdrop" tabindex="-1"></div>
+      <div class="modal-content">
+        <h2 id="modal-title" class="modal-title">Konfirmasi</h2>
+        <p id="modal-desc" class="modal-desc">
+          Apakah Anda yakin ingin melakukan tindakan ini?
+        </p>
+
+        <div class="modal-actions">
+          <button id="btn-cancel" class="btn-secondary">Batal</button>
+          <button id="btn-confirm" class="btn-primary">Ya, Lanjutkan</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/krs.js"></script>
+    <script src="assets/js/session.js"></script>
+  </body>
+</html>

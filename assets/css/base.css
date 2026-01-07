@@ -1,0 +1,54 @@
+/* Reset & Global Styles */
+*,
+*::before,
+*::after {
+  /* Pastikan padding tidak menambah lebar elemen */
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  /* PENTING: Mencegah scroll horizontal hantu di Chrome */
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* Agar lompatan skip-link halus */
+  /* Opsional: Membuat font lebih halus */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* SC 1.4.4 Resize Text & SC 1.4.12 Text Spacing */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* SC 2.4.1 Bypass Blocks */
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  background: var(--primary-color);
+  color: #ffffff;
+  padding: 12px 20px;
+  z-index: 9999;
+  transition: top 0.3s;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0 0 4px 4px;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--focus-outline);
+}

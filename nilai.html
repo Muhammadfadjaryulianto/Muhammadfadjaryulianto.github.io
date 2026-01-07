@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rekam Nilai - SIAKAD UNTIRTA</title>
+
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/nilai.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
+
+    <div class="dashboard-layout">
+      <div id="navigation-component"></div>
+
+      <main id="main-content" class="main-content">
+        <div id="topbar-component"></div>
+
+        <div class="content-wrapper">
+          <h1 class="main-content-title">Rekam Nilai & KHS</h1>
+
+          <div class="filter-section card">
+            <label for="semester-select" class="filter-label"
+              >Pilih Semester:</label
+            >
+            <div class="select-wrapper">
+              <select
+                id="semester-select"
+                class="form-select"
+                aria-controls="nilai-table-body summary-area"
+              >
+                <option value="all">Semua Semester (Transkrip)</option>
+                <option value="20251" selected>Ganjil 2025/2026</option>
+                <option value="20242">Genap 2024/2025</option>
+                <option value="20241">Ganjil 2024/2025</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            id="filter-announcer"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+          <div id="summary-area" class="summary-cards">
+            <div class="card summary-item">
+              <span class="summary-label">IPS (Semester Ini)</span>
+              <span class="summary-value" id="ips-value">0.00</span>
+            </div>
+            <div class="card summary-item">
+              <span class="summary-label">IPK (Kumulatif)</span>
+              <span class="summary-value">3.85</span>
+            </div>
+            <div class="card summary-item">
+              <span class="summary-label">Total SKS</span>
+              <span class="summary-value" id="sks-value">0</span>
+            </div>
+          </div>
+
+          <section class="card mt-2">
+            <div
+              class="table-responsive"
+              tabindex="0"
+              aria-label="Tabel Data Nilai"
+            >
+              <table class="data-table">
+                <caption class="sr-only">
+                  Daftar nilai mata kuliah berdasarkan semester yang dipilih
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Kode</th>
+                    <th scope="col">Mata Kuliah</th>
+                    <th scope="col">SKS</th>
+                    <th scope="col">Nilai</th>
+                    <th scope="col">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody id="nilai-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/session.js"></script>
+    <script src="assets/js/nilai.js"></script>
+  </body>
+</html>

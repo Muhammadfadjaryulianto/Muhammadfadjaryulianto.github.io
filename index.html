@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masuk | Sistem Informasi Akademik</title>
+
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
+
+    <main id="main-content" class="login-container">
+      <div class="login-card">
+        <div class="logo-container">
+          <img
+            src="assets/image/untirta.webp"
+            alt="Logo Universitas Sultan Ageng Tirtayasa"
+            class="university-logo"
+          />
+        </div>
+
+        <h1 class="login-title">Masuk</h1>
+        <p class="subtitle">Sistem Informasi Akademik</p>
+
+        <div
+          id="error-message"
+          class="error-alert hidden"
+          role="alert"
+          aria-live="assertive"
+        >
+          <span class="error-icon" aria-hidden="true">⚠️</span>
+          <span id="error-text"></span>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="email" class="form-label">Email Mahasiswa</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              autocomplete="email"
+              placeholder="nama@mahasiswa.untirta.ac.id"
+            />
+            <small class="input-hint"
+              >Gunakan email institusi (@untirta.ac.id)</small
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">Kata Sandi</label>
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              autocomplete="current-password"
+            />
+          </div>
+
+          <button type="submit" class="btn-primary">Masuk</button>
+        </form>
+      </div>
+    </main>
+
+    <script src="assets/js/login.js"></script>
+  </body>
+</html>

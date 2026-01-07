@@ -1,0 +1,296 @@
+/* Sidebar Navigasi (Global Component) */
+/* Sidebar Default (Desktop) */
+.sidebar {
+  width: 20vw;
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  /* Izinkan scroll vertikal jika konten melebihi tinggi layar */
+  overflow-y: auto;
+}
+
+/* Tombol Toggle & Close (Tersembunyi di Desktop) */
+.mobile-toggle,
+.mobile-close,
+.sidebar-overlay {
+  display: none;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sidebar-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.sidebar-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 1rem;
+}
+
+.nav-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* SC 2.5.8 Target Size */
+.nav-link {
+  display: block;
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  background-color: #f1f5f9;
+  color: var(--primary-color);
+}
+
+/* State Active (Akan diatur otomatis oleh JS) */
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* SC 2.4.7 Focus Visible */
+.nav-link:focus {
+  outline: 3px solid var(--focus-outline);
+  outline-offset: -2px;
+}
+
+/* Logout Button Specific Style */
+.btn-logout {
+  color: var(--error-text);
+}
+.btn-logout:hover {
+  background-color: var(--error-bg);
+}
+
+/* --- RESPONSIF MOBILE/ZOOM (Max-width 1024px) --- */
+@media (max-width: 1024px) {
+  /* 1. Sembunyikan Sidebar ke Kiri Layar */
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 2. Tampilkan Sidebar saat kelas .open aktif */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* 3. Tombol Hamburger (PERBAIKAN DI SINI) */
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* GANTI DARI FIXED KE ABSOLUTE */
+    /* Agar tombol ikut tergulir ke atas saat user scroll ke bawah, */
+    /* sehingga tidak menutupi konten selamanya. */
+    position: absolute;
+
+    top: 1.25rem; /* Sejajar dengan teks header */
+    left: 25px; /* Margin kiri yang pas */
+    z-index: 1100;
+
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Sedikit lebih ramping */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Animasi halus saat hilang/muncul */
+    transition: opacity 0.2s, visibility 0.2s;
+  }
+
+  /* Kelas untuk menyembunyikan tombol hamburger saat menu terbuka */
+  .mobile-toggle.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Agar tidak bisa diklik saat sembunyi */
+  }
+
+  /* 4. Tombol Close (X) di dalam Sidebar */
+  .mobile-close {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-left: auto;
+    padding: 5px; /* Area sentuh lebih baik */
+  }
+
+  .mobile-close:hover {
+    color: var(--error-text); /* Merah saat hover */
+  }
+
+  /* 5. Overlay Gelap Belakang */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.active {
+    display: block;
+  }
+}
+
+/* ... [Kode Sidebar yang lama tetap di atas] ... */
+
+/* === GLOBAL TOP BAR STYLE === */
+/* Dipindahkan dari dashboard.css karena sekarang dipakai global */
+.top-bar {
+  background-color: #ffffff;
+  width: 100%;
+  /* Padding disesuaikan agar konsisten */
+  padding: 1.1rem 4rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.user-profile {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-name {
+  display: block;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.user-role {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Responsif Top Bar */
+@media (max-width: 1024px) {
+  .top-bar {
+    /* Padding kiri disesuaikan agar tidak tabrakan dengan hamburger */
+    padding: 1rem 1.5rem 1rem 4rem;
+    height: auto;
+  }
+}
+
+/* ... [Kode Sidebar & Top Bar yang lama biarkan tetap ada] ... */
+
+/* === GLOBAL LAYOUT STRUCTURE (Pindahkan dari dashboard.css) === */
+/* Agar Dashboard, KRS, dan Nilai punya struktur identik */
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+}
+
+.main-content {
+  margin-left: 20vw; /* Sesuai lebar sidebar */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s;
+  /* --- PERBAIKAN FINAL CHROME JUMP --- */
+  /* 1. Kunci agar tidak melebar melebihi viewport */
+  width: 100%;
+  max-width: 100%;
+
+  /* 2. Mantra Flexbox: Izinkan container menyusut meski kontennya lebar */
+  min-width: 0;
+
+  /* 3. Paksa potong overflow horizontal apapun yang terjadi */
+  overflow-x: hidden !important;
+
+  /* Opsional: Agar animasi scroll anchor lebih halus */
+  scroll-behavior: smooth;
+}
+
+.content-wrapper {
+  /* Padding Global: Konsisten di semua halaman */
+  padding: 0.5rem 2rem 4rem 2rem;
+  flex: 1;
+  width: 80vw; /* Pastikan mengisi lebar yang tersedia */
+  box-sizing: border-box; /* Mencegah padding menambah lebar total */
+}
+
+/* Judul H1 Global */
+h1 {
+  text-align: left;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  color: var(--text-primary);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* === GLOBAL RESPONSIVE (Mobile & Zoom 200%) === */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0; /* Reset margin saat sidebar hilang */
+  }
+
+  .content-wrapper {
+    /* Padding mengecil di Mobile agar tidak ada scroll horizontal */
+    width: 100vw;
+    padding: 2rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+}

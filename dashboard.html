@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Sistem Informasi Akademik</title>
+
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/utilities.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
+
+    <div class="dashboard-layout">
+      <div id="navigation-component"></div>
+
+      <main id="main-content" class="main-content">
+        <div id="topbar-component"></div>
+        <div class="content-wrapper">
+          <h1 class="main-content-title">
+            Selamat Datang, Muhammad Fadjar Yulianto
+          </h1>
+
+          <div class="dashboard-cards">
+            <section class="card" aria-labelledby="status-title">
+              <h2 id="status-title" class="card-title">Status Akademik</h2>
+              <p class="status-badge active">Aktif</p>
+              <p>Semester: Ganjil 2025/2026</p>
+            </section>
+
+            <section class="card" aria-labelledby="ipk-title">
+              <h2 id="ipk-title" class="card-title">Ringkasan Prestasi</h2>
+              <div class="stat-item">
+                <span class="stat-label">IPK Terakhir</span>
+                <span class="stat-value">3.85</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/session.js"></script>
+  </body>
+</html>

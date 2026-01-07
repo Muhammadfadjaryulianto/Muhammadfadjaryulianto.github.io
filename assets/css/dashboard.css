@@ -1,0 +1,115 @@
+/* --- PERBAIKAN 3: KARTU LEBIH LEBAR (FULL WIDTH) --- */
+.dashboard-cards {
+  display: grid;
+  /* KUNCI PERBAIKAN LEBAR: */
+  /* Ubah minmax dari 320px menjadi 450px. */
+  /* Artinya: Jangan buat kolom baru kalau lebarnya kurang dari 450px. */
+  /* Efeknya: Kartu akan melebar memenuhi layar (stretch) daripada membuat celah kosong. */
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem; /* Jarak antar kartu */
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 2.5rem; /* Padding dalam kartu diperbesar agar lega */
+  border-radius: 16px; /* Sudut lebih bulat modern */
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  /* Memastikan kartu mengisi tinggi baris */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color); /* Efek border saat hover */
+}
+
+.card-title {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Badge Status */
+.status-badge {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.status-badge.active {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+/* Angka Statistik */
+.stat-value {
+  font-size: 3.5rem; /* Angka diperbesar signifikan */
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1; /* Mencegah spasi vertikal berlebih */
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* === MEDIA QUERY UNTUK MOBILE & ZOOM 200% === */
+@media (max-width: 1024px) {
+  /* 1. Hilangkan Margin Kiri (Karena sidebar sudah sembunyi) */
+  .main-content {
+    width: 100vw;
+    margin-left: 0;
+  }
+
+  /* 2. Sesuaikan Padding agar tidak terlalu lebar di HP */
+  .top-bar {
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 4rem; /* Kiri 4rem memberi ruang tombol hamburger */
+    /*justify-content: flex-end; /* Tetap kanan */
+    height: auto;
+  }
+
+  .content-wrapper {
+    padding: 2rem 1.5rem; /* Padding dikecilkan */
+  }
+
+  /* 3. FIX HORIZONTAL SCROLL: Kartu menyesuaikan layar */
+  .dashboard-cards {
+    /* Ubah minmax jadi 100% agar kartu menumpuk vertikal di HP */
+    /* Jangan paksa 450px di layar yang cuma 360px! */
+    grid-template-columns: 1fr;
+  }
+
+  /* 4. Sesuaikan Font Judul */
+  h1 {
+    font-size: 1.75rem;
+    margin-top: 2rem; /* Turunkan sedikit karena ada tombol hamburger */
+  }
+
+  .card {
+    padding: 1.5rem; /* Padding kartu dikecilkan sedikit */
+  }
+
+  .stat-value {
+    font-size: 2.5rem; /* Angka dikecilkan sedikit agar muat */
+  }
+}
