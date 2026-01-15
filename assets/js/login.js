@@ -5,6 +5,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorMessage = document.getElementById("error-message");
   const errorText = document.getElementById("error-text");
 
+  // --- ELEMENTS FOR PASSWORD TOGGLE ---
+  const togglePasswordBtn = document.getElementById("togglePassword");
+  const iconShow = document.getElementById("icon-show");
+  const iconHide = document.getElementById("icon-hide");
+
+  // --- LOGIC: Toggle Password Visibility ---
+  togglePasswordBtn.addEventListener("click", () => {
+    // 1. Cek tipe saat ini (password atau text)
+    const type =
+      passwordInput.getAttribute("type") === "password" ? "text" : "password";
+
+    // 2. Ubah tipe input
+    passwordInput.setAttribute("type", type);
+
+    // 3. Ubah Ikon & Aria Label (Penting untuk Screen Reader)
+    if (type === "text") {
+      // Mode Terlihat
+      iconShow.classList.add("hidden");
+      iconHide.classList.remove("hidden");
+      togglePasswordBtn.setAttribute("aria-label", "Sembunyikan kata sandi");
+    } else {
+      // Mode Tersembunyi
+      iconHide.classList.add("hidden");
+      iconShow.classList.remove("hidden");
+      togglePasswordBtn.setAttribute("aria-label", "Tampilkan kata sandi");
+    }
+  });
+
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
     hideError();

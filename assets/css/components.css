@@ -296,3 +296,40 @@
     margin-left: 0;
   }
 }
+
+/* === PASSWORD TOGGLE (SC 3.3.8) === */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Beri ruang di kanan input agar teks tidak menabrak ikon */
+.password-wrapper .form-input {
+  padding-right: 48px;
+}
+
+.btn-toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.btn-toggle-password:hover {
+  color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn-toggle-password:focus {
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 2px;
+}

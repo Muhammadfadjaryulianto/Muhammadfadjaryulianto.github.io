@@ -153,11 +153,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- ACCESSIBILITY ANNOUNCEMENT (SC 4.1.2) ---
     // Memberitahu screen reader bahwa konten telah berubah
+
+    // LANGKAH 1: Kosongkan dulu konten announcer agar screen reader mendeteksi adanya "perubahan" baru nanti
+    announcer.textContent = "";
     if (result) {
       const message = `Menampilkan ${result.count} mata kuliah untuk ${result.semesterText}. IPS Anda: ${result.ips}`;
-      announcer.textContent = message;
+      // LANGKAH 2: Gunakan setTimeout (Delay)
+      // Kita tunggu 1000ms (1 detik) agar NVDA selesai menyebutkan nama semester dulu.
+      setTimeout(() => {
+        announcer.textContent = message;
+      }, 1000);
     } else {
-      announcer.textContent = "Tidak ada data untuk semester yang dipilih.";
+      setTimeout(() => {
+        announcer.textContent = "Tidak ada data untuk semester yang dipilih.";
+      }, 1000);
     }
   });
 
