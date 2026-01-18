@@ -80,14 +80,6 @@
     margin-left: 0;
   }
 
-  /* 2. Sesuaikan Padding agar tidak terlalu lebar di HP */
-  .top-bar {
-    width: 100%;
-    padding: 1rem 1.5rem 1rem 4rem; /* Kiri 4rem memberi ruang tombol hamburger */
-    /*justify-content: flex-end; /* Tetap kanan */
-    height: auto;
-  }
-
   .content-wrapper {
     padding: 2rem 1.5rem; /* Padding dikecilkan */
   }

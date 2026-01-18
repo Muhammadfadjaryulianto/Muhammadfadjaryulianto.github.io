@@ -92,17 +92,57 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // --- CARI BAGIAN INI DI BAGIAN BAWAH navbar.js ANDA ---
   const topbarContainer = document.getElementById("topbar-component");
 
   if (topbarContainer) {
-    // Inject HTML Top Bar
+    // 1. UPDATE STRUKTUR HTML (Inject HTML baru dengan NIM & Foto)
     topbarContainer.innerHTML = `
             <header class="top-bar">
-                <div class="user-profile">
-                    <span class="user-name">Muhammad Fadjar Yulianto</span>
-                    <span class="user-role">Mahasiswa - Informatika</span>
+                <div class="user-profile-text">
+                    <span class="user-name">Mahasiswa</span>
+                    <span class="user-nim">33372100100</span> <span class="user-role">Mahasiswa - Informatika</span>
                 </div>
+
+                <div class="user-profile-photo" id="profile-photo-trigger" role="button" tabindex="0" title="Klik untuk ganti foto">
+                    <img id="profile-img-display" src=" " alt="Foto Profil" onerror="this.src='https://ui-avatars.com/api/?name=Fadjar+Yulianto&background=0D8ABC&color=fff'">
+                </div>
+
+                <input type="file" id="profile-upload-input" accept="image/*" style="display: none;">
             </header>
         `;
+
+    // 2. LOGIKA UPLOAD FOTO (Simulasi Client-Side)
+    const photoTrigger = document.getElementById("profile-photo-trigger");
+    const fileInput = document.getElementById("profile-upload-input");
+    const imgDisplay = document.getElementById("profile-img-display");
+
+    if (photoTrigger && fileInput && imgDisplay) {
+      // Saat foto diklik -> Buka file explorer
+      photoTrigger.addEventListener("click", () => {
+        fileInput.click();
+      });
+
+      // Dukungan Keyboard (Enter/Spasi) untuk aksesibilitas
+      photoTrigger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          fileInput.click();
+        }
+      });
+
+      // Saat file dipilih -> Tampilkan preview
+      fileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            imgDisplay.src = e.target.result; // Ganti src gambar
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
   }
 });

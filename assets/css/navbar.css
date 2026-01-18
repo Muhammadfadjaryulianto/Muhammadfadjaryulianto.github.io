@@ -25,6 +25,7 @@
 
 .sidebar-header {
   padding: 1.5rem;
+  padding-bottom: 2.75rem;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -226,7 +227,69 @@
 @media (max-width: 1024px) {
   .top-bar {
     /* Padding kiri disesuaikan agar tidak tabrakan dengan hamburger */
-    padding: 1rem 1.5rem 1rem 4rem;
+    padding: 1rem 1.5rem 1rem 5rem;
     height: auto;
   }
+}
+
+/* === TAMBAHAN UNTUK PROFIL BARU === */
+
+/* 1. Container Teks (Agar rata kanan) */
+.user-profile-text {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-right: 15px; /* Jarak antara teks dan foto */
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Style Khusus NIM */
+.user-nim {
+  font-size: 0.85rem;
+  color: #555;
+  font-family: monospace; /* Supaya angka terlihat rapi */
+  margin: 2px 0;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* 2. Container Foto Profil (Lingkaran) */
+.user-profile-photo {
+  /* KUNCI: Mencegah flexbox mengecilkan elemen ini */
+  flex-shrink: 0;
+  /* Pastikan lebar dan tinggi tetap dikunci */
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50%;
+  overflow: hidden; /* Potong gambar jadi lingkaran */
+  cursor: pointer;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+}
+
+.user-profile-photo:hover,
+.user-profile-photo:focus {
+  border-color: #0d6efd; /* Warna biru saat hover */
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+  outline: none;
+}
+
+/* Gambar di dalam lingkaran */
+.user-profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Agar gambar tidak gepeng */
 }
