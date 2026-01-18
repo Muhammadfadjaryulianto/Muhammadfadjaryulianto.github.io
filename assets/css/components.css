@@ -295,6 +295,9 @@
     margin-top: 1rem;
     margin-left: 0;
   }
+  .form-input::placeholder {
+    font-size: 0.7rem;
+  }
 }
 
 /* === PASSWORD TOGGLE (SC 3.3.8) === */
